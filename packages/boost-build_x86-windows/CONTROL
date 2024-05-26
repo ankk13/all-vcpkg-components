@@ -1,0 +1,5 @@
+Package: boost-build
+Version: 1.70.0-1
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost.Build

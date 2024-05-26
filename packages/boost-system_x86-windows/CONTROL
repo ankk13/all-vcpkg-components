@@ -1,0 +1,6 @@
+Package: boost-system
+Version: 1.70.0
+Depends: boost-build, boost-config, boost-integer, boost-modular-build-helper, boost-vcpkg-helpers, boost-winapi
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost system module

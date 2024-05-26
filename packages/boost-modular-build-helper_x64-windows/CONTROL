@@ -1,0 +1,4 @@
+Package: boost-modular-build-helper
+Version: 1.70.0-2
+Architecture: x64-windows
+Multi-Arch: same

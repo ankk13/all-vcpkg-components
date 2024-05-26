@@ -1,0 +1,6 @@
+Package: boost-integer
+Version: 1.70.0
+Depends: boost-assert, boost-compatibility, boost-config, boost-core, boost-detail, boost-static-assert, boost-throw-exception, boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost integer module

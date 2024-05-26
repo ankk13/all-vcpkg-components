@@ -1,0 +1,6 @@
+Package: boost-asio
+Version: 1.70.0-2
+Depends: boost-array, boost-assert, boost-bind, boost-chrono, boost-compatibility, boost-config, boost-coroutine, boost-date-time, boost-detail, boost-function, boost-integer, boost-regex, boost-smart-ptr, boost-system, boost-throw-exception, boost-type-traits, boost-utility, boost-vcpkg-helpers, openssl
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost asio module

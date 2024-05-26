@@ -1,0 +1,6 @@
+Package: boost-lambda
+Version: 1.70.0
+Depends: boost-bind, boost-config, boost-detail, boost-mpl, boost-type-traits, boost-utility, boost-vcpkg-helpers
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost lambda module

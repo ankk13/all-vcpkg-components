@@ -1,0 +1,6 @@
+Package: websocketpp
+Version: 0.8.1-1
+Depends: zlib, openssl, boost-asio
+Architecture: x64-windows
+Multi-Arch: same
+Description: Library that implements RFC6455 The WebSocket Protocol

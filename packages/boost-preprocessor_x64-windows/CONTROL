@@ -1,0 +1,6 @@
+Package: boost-preprocessor
+Version: 1.70.0
+Depends: boost-vcpkg-helpers
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost preprocessor module

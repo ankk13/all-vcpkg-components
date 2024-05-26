@@ -1,0 +1,6 @@
+Package: boost-type-index
+Version: 1.70.0
+Depends: boost-config, boost-container-hash, boost-core, boost-preprocessor, boost-smart-ptr, boost-static-assert, boost-throw-exception, boost-type-traits, boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost type_index module

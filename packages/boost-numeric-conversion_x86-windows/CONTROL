@@ -1,0 +1,6 @@
+Package: boost-numeric-conversion
+Version: 1.70.0
+Depends: boost-compatibility, boost-config, boost-conversion, boost-core, boost-detail, boost-integer, boost-preprocessor, boost-throw-exception, boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost numeric_conversion module

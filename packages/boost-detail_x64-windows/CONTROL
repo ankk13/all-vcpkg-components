@@ -1,0 +1,6 @@
+Package: boost-detail
+Version: 1.70.0
+Depends: boost-compatibility, boost-config, boost-preprocessor, boost-vcpkg-helpers
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost detail module

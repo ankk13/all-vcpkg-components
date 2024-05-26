@@ -1,0 +1,6 @@
+Package: boost-conversion
+Version: 1.70.0
+Depends: boost-assert, boost-config, boost-throw-exception, boost-typeof, boost-utility, boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost conversion module

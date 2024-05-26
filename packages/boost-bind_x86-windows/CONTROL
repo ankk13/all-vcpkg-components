@@ -1,0 +1,6 @@
+Package: boost-bind
+Version: 1.70.0
+Depends: boost-config, boost-core, boost-detail, boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost bind module

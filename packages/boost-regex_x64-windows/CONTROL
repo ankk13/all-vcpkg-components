@@ -1,0 +1,6 @@
+Package: boost-regex
+Version: 1.70.0
+Depends: boost-assert, boost-build, boost-compatibility, boost-concept-check, boost-config, boost-container-hash, boost-core, boost-detail, boost-integer, boost-iterator, boost-modular-build-helper, boost-mpl, boost-predef, boost-smart-ptr, boost-static-assert, boost-throw-exception, boost-type-traits, boost-utility, boost-vcpkg-helpers
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost regex module

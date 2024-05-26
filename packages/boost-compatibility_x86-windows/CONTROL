@@ -1,0 +1,6 @@
+Package: boost-compatibility
+Version: 1.70.0
+Depends: boost-vcpkg-helpers
+Architecture: x86-windows
+Multi-Arch: same
+Description: Boost compatibility module

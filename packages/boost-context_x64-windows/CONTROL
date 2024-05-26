@@ -1,0 +1,6 @@
+Package: boost-context
+Version: 1.70.0
+Depends: boost-assert, boost-build, boost-config, boost-detail, boost-integer, boost-modular-build-helper, boost-pool, boost-predef, boost-smart-ptr, boost-thread, boost-vcpkg-helpers
+Architecture: x64-windows
+Multi-Arch: same
+Description: Boost context module
