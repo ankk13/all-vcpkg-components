@@ -1,0 +1,5 @@
+The package cmocka:x64-linux provides CMake targets:
+
+    find_package(cmocka CONFIG REQUIRED)
+    target_include_directories(main PRIVATE ${CMOCKA_INCLUDE_DIR})
+    target_link_libraries(main PRIVATE ${CMOCKA_LIBRARIES})

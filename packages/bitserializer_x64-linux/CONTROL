@@ -1,0 +1,5 @@
+Package: bitserializer
+Version: 0.8
+Architecture: x64-linux
+Multi-Arch: same
+Description: The core part of library for serialization of arbitrary C++ types to various output formats.
