@@ -1,0 +1,238 @@
+openapi: 3.0.3
+info:
+  title: Lineaje Scout
+  description: |-
+    The Lineaje Scout provides many API products that enable you to generate SBOMs for your cloud resources. Lineaje Scout can be deployed in AWS account by subscribing to Lineaje AMI from AWS marketplace.
+    
+    The APIs follow resource based hierarchy
+    
+    Some useful links:
+    - [Subscribing to Lineaje Scout](https://github.com)
+    - [Getting Started with Lineaje Scout](https://github.com)
+  termsOfService: https://dev.veedna.com/
+  contact:
+    email: support@dev.veedna.com
+  license:
+    name: Lineaje License 1.0
+    url: https://dev.veedna.com//licenses/LICENSE-1.0.html
+  version: 1.0.1
+externalDocs:
+  description: Find out more about Lineaje Scout
+  url: https://dev.veedna.com/
+servers:
+  - url: https://<scout_ip>/api/v2
+tags:
+  - name: sbom
+    description: Generate Software Bill of Materials
+    externalDocs:
+      description: Find out more about SBOM
+      url: https://dev.veedna.com/
+paths:
+  /images/{registry_type}/{project_name}/{project_version}/sbom:
+    post:
+      tags: 
+       - sbom
+      description: Generate SBOM for the container image registries like dockerhub, ecr(Amazon Elastic Container Registry), acr(Azure Container Registry), oci
+      parameters:
+        - name: registry_type
+          in: path
+          description: Image registries integrations. Possible values dockerhub, ecr, acr, oci 
+          required: true
+          schema:
+            type: string
+        - name: project_name
+          in: path
+          description: Project name is identifier for uploaded SBOM 
+          required: true
+          schema:
+            type: string
+        - name: project_version
+          in: path
+          description: Project version is identifier for uploaded SBOM 
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Container Image, Tag & its access configurations are required to generate SBOM
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContainerSBOMInput'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Endpoint Not Found
+        '422':
+          description: Validation exception
+        
+    
+  /sample/{sample_id}:
+    get:
+      tags:
+        - sample
+      summary: get sample details
+      description: if this is POST and [custom method](https://cloud.google.com/apis/design/custom_methods), explain why it is needed. Also the post should foll
+      parameters:
+        - name: sample_id
+          in: path
+          description: Some description with example
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: header
+          description: 'reference to authentication page'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+              description: Request limit per hour.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerRegistry'          
+        '400':
+          description: Invalid ID supplied - ref. to confluence page
+        '404':
+          description: ContainerRegistry not found - ref. to confluence page
+        '422':
+          description: Validation exception - ref. to confluence page
+components:
+  schemas:
+    ContainerRegistry:
+      required:
+        - registryId
+      type: object
+      properties:
+        registryId:
+          type: string
+          description: Unique identifier for the registry
+          example: Docker Hub
+        category:
+          type: string
+          example: remote/local
+        url:
+          type: string
+          description: empty url is the local registry
+          example: https://docker.io/
+        authType:
+          type: string
+          description: authentication type
+          enum:
+            - Basic Authentication
+            - Bearer Token
+            - No Auth
+        authDetails:
+          type: string
+          description: encrypted authentication details accessing the registry
+        status:
+          type: string
+          description: Tests if the registry is accessible
+          enum:
+            - available
+            - not reachable
+            - authentication failed
+    ContainerRegistryInput:
+      required:
+        - registryId
+        - category
+        - authType
+      type: object
+      properties:
+        registryId:
+          type: string
+          description: Unique identifier for the registry
+          example: Docker Hub
+        category:
+          type: string
+          example: remote/local
+        registry_type:
+          type: string
+          description: Type of registry
+          example: AWS/Dockerhub/GCP
+        url:
+          type: string
+          description: empty url is the local registry
+          example: https://docker.io/
+        authType:
+          type: string
+          description: authentication type
+          enum:
+            - Basic Authentication
+            - Bearer Token
+            - No Auth
+        authDetails:
+          type: string
+          description: encrypted authentication details accessing the registry
+    ContainerSBOMInput:
+      required:
+        - access-config
+        - image
+        - tag
+      type: object
+      properties:
+        image_name:
+          type: string
+          description: Unique identifier for the repository
+          example: ubuntu
+        image_tag:
+          type: string
+          description: It can be tag or digest which is used for docker pull
+          example: latest
+        image_registry:
+              type: string
+              description: Image Registry URL for the container registry
+              example: 213456789012.dkr.ecr.us-west-2.amazonaws.com
+        access_token:
+          type: string
+          description: Access token for the container registry
+    Status:
+      required:
+        - status
+      type: object
+      properties:
+        status:
+          type: string
+          example: Success
+        error:
+          type: string
+          example: reason for failure
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  securitySchemes:
+    lineajescout_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://oauth.io/oauth/authorize
+          scopes:
+            write:container: modify containers in your account
+            read:containers: read the containers
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
