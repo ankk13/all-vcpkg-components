@@ -1,1 +1,1 @@
-{% swagger src="docs/assets/sample.yaml" path="/sbom" method="post" %} sample.yaml {% endswagger %}
+{% swagger src="assets/sample.yaml" path="/sbom" method="post" %} sample.yaml {% endswagger %}
