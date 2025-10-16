@@ -1,1 +1,2 @@
 vyper==0.3.10
+commons-beanutils==1.11.0
